@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tuline_turizm/screens/home/app.dart';
 
 class AdvertisementDetails extends StatefulWidget {
   const AdvertisementDetails({Key? key}) : super(key: key);
@@ -28,9 +29,16 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
               fontWeight: FontWeight.w500,
             ),
           ),
-          leading: Icon(
-            Icons.arrow_back,
-            color: Color.fromRGBO(24, 50, 75, 1),
+          leading: InkWell(
+            onTap: (){
+              Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
+                return AppScreen();
+              }));
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: Color.fromRGBO(24, 50, 75, 1),
+            ),
           ),
         ),
         body: SingleChildScrollView(

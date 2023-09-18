@@ -211,6 +211,7 @@ class _NotesScreenState extends State<AppScreen>{
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+
         backgroundColor: Colors.white,
         bottomNavigationBar: Container(
           // height: 90.h,
@@ -222,11 +223,13 @@ class _NotesScreenState extends State<AppScreen>{
                 print(value);
               });
             },
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             currentIndex: _currentIndex,
             backgroundColor: Colors.white,
             iconSize: 30,
-            selectedLabelStyle: TextStyle(color: Color.fromRGBO(255, 159, 0, 1)), // Red color for selected label
-            unselectedLabelStyle: TextStyle(color: Color.fromRGBO(24, 50, 75, 1)), // Default color for unselected labels
+            selectedLabelStyle: TextStyle(color: Colors.red), // Red color for selected label
+            unselectedLabelStyle: TextStyle(color: Colors.red), // Default color for unselected labels
 
             items: [
               BottomNavigationBarItem(

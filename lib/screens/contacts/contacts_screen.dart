@@ -46,10 +46,10 @@ class _ContactsScreenState extends State<ContactsScreen> {
                           height: 50,
                           width: 200,
                           decoration: BoxDecoration(
-                              color: Colors.blue.shade400,
+                              color: Color.fromRGBO(24, 50, 75, 1),
                               borderRadius: BorderRadius.circular(10)
                           ),
-                          child: Center(child: Text('Hi , Thank You :) ')),
+                          child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
                         ),
                       ],
                     ),
@@ -62,7 +62,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
                           height: 50,
                           width: 200,
                           decoration: BoxDecoration(
-                              color: Colors.grey.shade400,
+                              color: Colors.grey.shade200,
                               borderRadius: BorderRadius.circular(10)
                           ),
                           child: Center(child: Text('Hello How Are You ? ')),
@@ -79,14 +79,15 @@ class _ContactsScreenState extends State<ContactsScreen> {
                           height: 50,
                           width: 200,
                           decoration: BoxDecoration(
-                              color: Colors.blue.shade400,
+                              color: Color.fromRGBO(24, 50, 75, 1),
                               borderRadius: BorderRadius.circular(10)
                           ),
-                          child: Center(child: Text('Hi , Thank You :) ')),
+                          child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
                         ),
                       ],
                     ),
                   ),
+
 
 
                 ],
