@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
 import 'package:tuline_turizm/screens/home/app.dart';
 
 void main() {
@@ -28,6 +29,7 @@ void main() {
            initialRoute: '/app',
            routes: {
              '/app' : (context) => AppScreen(),
+             '/advertisement_details' : (context) => AdvertisementDetails(),
 
 
            },
