@@ -75,38 +75,269 @@ class _CustomDrawerState extends State<CustomDrawer>  {
             padding: EdgeInsets.zero,
             children: [
               SizedBox(
-                height: 40.h,
+                height: 60.h,
               ),
+          Column(
+            children: [
               Row(
-                children: [
-                  SizedBox(
-                    width: 10,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(60)
                   ),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.clear,
-                        color: Colors.white,
-                      )),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  // Text(
-                  //   'Menu',
-                  //   style: GoogleFonts.tajawal(
-                  //     fontSize: 18.sp,
-                  //     fontWeight: FontWeight.bold,
-                  //     color: Colors.white,
-                  //   ),
-                  // ),
-                ],
+                  child: Image.asset('images/woman.png',fit: BoxFit.cover,),
+                  clipBehavior: Clip.antiAlias,
+                ),
+
+
+              ],
+            ),
+              SizedBox(height: 20,),
+              Text('Ali ahmad',
+                style: GoogleFonts.inter(
+                  color: Colors.white,
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
 
+              SizedBox(height: 20,),
 
 
+              Directionality(
+               textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('اللغة / Language',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  trailing: Icon(Icons.arrow_circle_down_sharp,color: Colors.white,),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('العملة',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  trailing: Icon(Icons.arrow_circle_down_sharp,color: Colors.white,),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('المناطق السياحية',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('المحفظة',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
 
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('المفضلة',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('العروض والتنبيهات',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('رحلاتي',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('اتفاقية الاستخدام وسياسة الخصوصية ',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('عن التطبيق',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: ListTile(
+                  // leading:Icon(Icons.ac_unit),
+                  title: Text('تسجيل خروج',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
             ],
           ),
         ),

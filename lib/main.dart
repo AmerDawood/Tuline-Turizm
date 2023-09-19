@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
 import 'package:tuline_turizm/screens/home/app.dart';
+import 'package:tuline_turizm/screens/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,11 +28,12 @@ void main() {
            // locale: savedLocale != null ? Locale(savedLocale!) : null,
            // fallbackLocale: Locale('en', 'US'),
            debugShowCheckedModeBanner: false,
-           initialRoute: '/advertisement_details2',
+           initialRoute: '/splash_screen',
            routes: {
              '/app' : (context) => AppScreen(),
-             '/advertisement_details' : (context) => AdvertisementDetails(),
-             '/advertisement_details2' : (context) => AdvertisementDetails2(),
+             '/splash_screen' : (context) => SplashScreen(),
+             // '/advertisement_details' : (context) => AdvertisementDetails(),
+             // '/advertisement_details2' : (context) => AdvertisementDetails2(),
 
 
            },
