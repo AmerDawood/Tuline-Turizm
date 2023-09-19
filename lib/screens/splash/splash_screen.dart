@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -11,41 +9,43 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  double opacity = 0.0;
+  double scale = 0.5; // Initial scale factor for the image
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
-    // FbNotifications().requestNotificationPermissions();
-    // Future.delayed(Duration(seconds: 3),(){
-    //   Navigator.pushReplacementNamed(context, '/page_view_screen');
-    //   // String routeName =UserPreferenceController().loggedIn ?'/app_screen':'/page_view_screen';
-    //   // Navigator.pushReplacementNamed(context, routeName);
-    // }
-    // );
-
-    Future.delayed(Duration(seconds: 3),(){
-      // String routeName =UserPreferenceController().loggedIn ?'/app':'/page_view_screen';
-      Navigator.pushReplacementNamed(context, '/app');
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        opacity = 1.0; // Set opacity to 1 to show the image with fade-in animation
+        scale = 1.0; // Set the scale factor to 1 for the zoom-in animation
+      });
+      // After the animations, navigate to the '/app' route
+      Future.delayed(Duration(seconds: 1), () {
+        Navigator.pushReplacementNamed(context, '/app');
+      });
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body:Container(
+      body: Container(
         width: double.infinity,
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 300,
-              width: 300,
-              child: Image.asset('images/logo.png'),
+            AnimatedOpacity(
+              duration: Duration(seconds: 1),
+              opacity: opacity,
+              child: AnimatedContainer(
+                duration: Duration(seconds: 1),
+                width: 300 * scale, // Adjust the width based on the scale factor
+                height: 300 * scale, // Adjust the height based on the scale factor
+                child: Image.asset('images/logo.png'),
+              ),
             ),
           ],
         ),

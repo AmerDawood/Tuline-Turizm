@@ -12,7 +12,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -24,11 +24,15 @@ class _ContactsScreenState extends State<ContactsScreen> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        leading: Icon(Icons.arrow_back,color: Color.fromRGBO(24, 50, 75, 1),),
+        leading: InkWell(
+            onTap: (){
+              Scaffold.of(context).openDrawer();
+            },
+            child: Icon(Icons.menu,color: Color.fromRGBO(24, 50, 75, 1),)),
       ),
       body: ListView(
         children: [
-          // SizedBox(height: 20,),
+          SizedBox(height: 20,),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -81,35 +85,57 @@ class _ContactsScreenState extends State<ContactsScreen> {
           ),
 
           SizedBox(height: 400,),
-          // Spacer(),
-          Padding(
-              padding: const EdgeInsets.only(
-                  bottom: 60,
-                  left: 20,
-                  right: 20
+
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Icon(Icons.keyboard_voice,color: Colors.white,),
+                ),
               ),
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16), // Adjust padding as needed
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  // border: Border.all(color: Colors.grey), // Add border
-                  borderRadius: BorderRadius.circular(30), // Add rounded corners
-                ),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none, // Remove TextField border
-                          hintText: 'اكتب رسالة...',
-                        ),
-                      ),
+
+              SizedBox(width: 10,),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30), // Adjust the border radius as needed
+                  // border: Border.all(
+                  // // color: Colors.white,
+                  // width: 1.0,
+                  // ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 1,
+                              offset: Offset(0, 1), // changes position of shadow
+                            ),
+                          ],
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "اكتب رسالتك هنا...",
+                      prefixIcon: Icon(Icons.attach_file,color: Colors.grey,),
+                      border: InputBorder.none, // Remove the default border
+                      contentPadding: EdgeInsets.all(10), // Adjust the padding as needed
                     ),
-                    Icon(Icons.send), // Icon suffix
-                  ],
+                  ),
                 ),
-              )
-          ),
+              ),
+              SizedBox(width: 10,),
+
+
+            ],
+          )
+
+
 
 
 

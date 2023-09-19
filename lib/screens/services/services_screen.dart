@@ -40,6 +40,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                       children: [
                         IconButton(
                           onPressed: () {
+                            Scaffold.of(context).openDrawer();
                             // _scaffoldKey.currentState?.openDrawer();
                           },
                           icon: Icon(Icons.menu,color: Colors.white,),
@@ -54,9 +55,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
                           ),
                         ),
                         Text('الخدمات',
-                        style: TextStyle(
-                          color: Color.fromRGBO(24, 50, 75,1),
-                        ),
+                          style: TextStyle(
+                            color: Color.fromRGBO(24, 50, 75,1),
+                          ),
                         ),
                       ],
                     ),
@@ -164,8 +165,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
                           width: 120,
                           decoration: BoxDecoration(
                             // color: Color.fromRGBO(255, 159, 0, 1),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.white,width: 2)
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.white,width: 2)
                           ),
                           child: Center(
                             child: Text(' مطار صبيحة',

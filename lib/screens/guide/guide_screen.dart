@@ -25,7 +25,9 @@ class _GuideScreenState extends State<GuideScreen> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        leading: Icon(Icons.arrow_back,color: Color.fromRGBO(24, 50, 75, 1),),
+        leading: InkWell(onTap: (){
+          Scaffold.of(context).openDrawer();
+        },child: Icon(Icons.menu,color: Color.fromRGBO(24, 50, 75, 1),)),
       ),
 
 

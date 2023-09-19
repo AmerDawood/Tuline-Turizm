@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tuline_turizm/screens/home/app.dart';
+import 'package:tuline_turizm/screens/home/home_screen.dart';
 
 class AdvertisementDetails extends StatefulWidget {
   const AdvertisementDetails({Key? key}) : super(key: key);
@@ -31,8 +32,11 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
           ),
           leading: InkWell(
             onTap: (){
-              Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
-                return AppScreen();
+              // Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
+              //   return Home();
+              // }));
+              Navigator.push(context, MaterialPageRoute(builder: (_){
+                return HomeScreen();
               }));
             },
             child: Icon(

@@ -4,6 +4,7 @@ import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart'
 import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
 import 'package:tuline_turizm/screens/home/app.dart';
 import 'package:tuline_turizm/screens/splash/splash_screen.dart';
+import 'package:tuline_turizm/screens/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,10 +31,10 @@ void main() {
            debugShowCheckedModeBanner: false,
            initialRoute: '/splash_screen',
            routes: {
-             '/app' : (context) => AppScreen(),
+             '/app' : (context) => Home(),
              '/splash_screen' : (context) => SplashScreen(),
-             // '/advertisement_details' : (context) => AdvertisementDetails(),
-             // '/advertisement_details2' : (context) => AdvertisementDetails2(),
+             '/advertisement_details' : (context) => AdvertisementDetails(),
+             '/advertisement_details2' : (context) => AdvertisementDetails2(),
 
 
            },

@@ -83,8 +83,8 @@ class _CustomDrawerState extends State<CustomDrawer>  {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 100,
-                  width: 100,
+                  height: 70,
+                  width: 70,
                   decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(60)
@@ -96,7 +96,7 @@ class _CustomDrawerState extends State<CustomDrawer>  {
 
               ],
             ),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
               Text('Ali ahmad',
                 style: GoogleFonts.inter(
                   color: Colors.white,
@@ -105,66 +105,46 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 ),
               ),
 
+              SizedBox(height: 10,),
+              Container(
+                height: 30,
+                width: 100,
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(40)
+                ),
+                child: Center(
+                  child: Text('USD  0: المحفظة',
+                  style: GoogleFonts.inter(
+                    color: Colors.white,
+                  ),
+                  ),
+                ),
+              ),
               SizedBox(height: 20,),
 
 
-              Directionality(
-               textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('اللغة / Language',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  trailing: Icon(Icons.arrow_circle_down_sharp,color: Colors.white,),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                ),
-                child: Divider(
-                  height: 1,
-                  color: Colors.white,
-                ),
-              ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('العملة',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
                   ),
-                  trailing: Icon(Icons.arrow_circle_down_sharp,color: Colors.white,),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                ),
-                child: Divider(
-                  height: 1,
-                  color: Colors.white,
-                ),
-              ),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('المناطق السياحية',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('اللغة / Language',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
@@ -173,21 +153,72 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 padding: const EdgeInsets.only(
                   left: 15,
                   right: 15,
+                  top: 7,
+                  bottom: 20,
                 ),
                 child: Divider(
                   height: 1,
                   color: Colors.white,
                 ),
               ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('المحفظة',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('العملة',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        Image.asset('images/arrow_under.png')
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 7,
+                  bottom: 20,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('المناطق السياحية',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
@@ -197,21 +228,72 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 padding: const EdgeInsets.only(
                   left: 15,
                   right: 15,
+                  top: 7,
+                  bottom: 20,
                 ),
                 child: Divider(
                   height: 1,
                   color: Colors.white,
                 ),
               ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('المفضلة',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('المحفظة',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 7,
+                  bottom: 20,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('المفضلة',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
@@ -221,21 +303,35 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 padding: const EdgeInsets.only(
                   left: 15,
                   right: 15,
+                  top: 7,
+                  bottom: 20,
                 ),
                 child: Divider(
                   height: 1,
                   color: Colors.white,
                 ),
               ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('العروض والتنبيهات',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('العروض والتنبيهات',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
@@ -245,21 +341,72 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 padding: const EdgeInsets.only(
                   left: 15,
                   right: 15,
+                  top: 7,
+                  bottom: 20,
                 ),
                 child: Divider(
                   height: 1,
                   color: Colors.white,
                 ),
               ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('رحلاتي',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('رحلاتي',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 7,
+                  bottom: 20,
+                ),
+                child: Divider(
+                  height: 1,
+                  color: Colors.white,
+                ),
+              ),
+
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('اتفاقية الاستخدام وسياسة الخصوصية ',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
@@ -269,21 +416,35 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 padding: const EdgeInsets.only(
                   left: 15,
                   right: 15,
+                  top: 7,
+                  bottom: 20,
                 ),
                 child: Divider(
                   height: 1,
                   color: Colors.white,
                 ),
               ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('اتفاقية الاستخدام وسياسة الخصوصية ',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('عن التطبيق',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
@@ -293,49 +454,128 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 padding: const EdgeInsets.only(
                   left: 15,
                   right: 15,
+                  top: 7,
+                  bottom: 20,
                 ),
                 child: Divider(
                   height: 1,
                   color: Colors.white,
                 ),
               ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('عن التطبيق',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('شارك التطبيق ',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
               ),
 
+
+
               Padding(
                 padding: const EdgeInsets.only(
                   left: 15,
                   right: 15,
+                  top: 7,
+                  bottom: 20,
                 ),
                 child: Divider(
                   height: 1,
                   color: Colors.white,
                 ),
               ),
+
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: ListTile(
-                  // leading:Icon(Icons.ac_unit),
-                  title: Text('تسجيل خروج',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 18,
+                    right: 18,
+                  ),
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Text('تسجيل خروج',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Spacer(),
+                        // Image.asset('images/arrow_under.png')
+                      ],
                     ),
                   ),
                 ),
               ),
+SizedBox(height: 20,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Image.asset('images/instagram.png'),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Image.asset('images/phone.png'),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Image.asset('images/facebook.png',color: Color.fromRGBO(24, 50, 75, 1),),
+                    ),
+                  ),
+                ],
+              ),
+
+
+
             ],
           )
             ],
