@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
+import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
 import 'package:tuline_turizm/screens/home/app.dart';
 
 void main() {
@@ -26,10 +27,11 @@ void main() {
            // locale: savedLocale != null ? Locale(savedLocale!) : null,
            // fallbackLocale: Locale('en', 'US'),
            debugShowCheckedModeBanner: false,
-           initialRoute: '/app',
+           initialRoute: '/advertisement_details2',
            routes: {
              '/app' : (context) => AppScreen(),
              '/advertisement_details' : (context) => AdvertisementDetails(),
+             '/advertisement_details2' : (context) => AdvertisementDetails2(),
 
 
            },

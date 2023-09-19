@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
+import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
 
 import '../widgets/drawer.dart';
 
@@ -334,14 +335,126 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
+                        InkWell(
+                          onTap: (){
+                            Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
+                              return AdvertisementDetails();
+                            }));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 300,
+                              width: 230,
+                              decoration: BoxDecoration(
+                                // color: Colors.red,
+                                  borderRadius: BorderRadius.circular(25)
+                              ),
+                              child: Stack(
 
+                                children: [
+                                  Image.asset('images/new_van.jpeg',fit: BoxFit.cover,height: double.infinity,),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(18.0),
+                                    child: Row(
+                                      children: [
+                                        Spacer(),
+
+                                        Container(
+                                          height: 20,
+                                          width: 50,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(50),
+                                              color: Color.fromRGBO(255, 123, 0,1)
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text('0',
+                                                style: GoogleFonts.inter(
+                                                  color: Colors.white,
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                              SizedBox(width: 3,),
+                                              Image.asset('images/star.png',color: Colors.white,height: 15,)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  Positioned(
+                                      bottom: 0,
+                                      child: Container(height: 70,width: 230,
+                                        // color: Colors.red,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(left: 12,right: 12),
+                                          child: Row(
+                                            children: [
+
+                                              Text('استقبال وتوديع',
+                                                style: GoogleFonts.inter(
+                                                    color: Colors.white,
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w700
+                                                ),
+                                              ),
+                                              Spacer(),
+                                              Column(
+                                                children: [
+                                                  SizedBox(height: 5,),
+                                                  Text('ابتداءً من',
+                                                    style: GoogleFonts.inter(
+                                                        color: Colors.white,
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w700
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 6,),
+                                                  Container(
+                                                    height:30,
+                                                    width: 60,
+                                                    decoration: BoxDecoration(
+                                                      color: Color.fromRGBO(0, 125, 251, 1),
+                                                      borderRadius: BorderRadius.circular(20),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text('45 usd',
+                                                        style: GoogleFonts.inter(
+                                                            color: Colors.white,
+                                                            fontSize: 14,
+                                                            fontWeight: FontWeight.w700
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ))
+
+
+
+
+                                ],
+                              ),
+                              clipBehavior: Clip.antiAlias,
+
+
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ],
             ),
-
             Padding(
               padding: EdgeInsets.only(
                 right: 34.w,
@@ -367,54 +480,68 @@ class _HomeScreenState extends State<HomeScreen> {
             scrollDirection: Axis.horizontal,
              child: Row(
                children: [
-                 Padding(
-                   padding: const EdgeInsets.only(
-                     left: 10,
-                     right: 10,
-                     top: 10,
-                     bottom: 10,
-                   ),
-                   child: Container(
-                     height: 235.h,
-                     width: 370.w,
-                     decoration: BoxDecoration(
-                         color: Colors.white,
-                         borderRadius: BorderRadius.circular(15.r),
-                       boxShadow: [
-                         BoxShadow(
-                           color: Colors.grey.withOpacity(0.5),
-                           spreadRadius: 1,
-                           blurRadius: 2,
-                           offset: Offset(0, 2), // changes position of shadow
-                         ),
-                       ],
+                 InkWell(
+                   onTap: (){
+                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                       return AdvertisementDetails2();
+                     }));
+                   },
+                   child: Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
+                       top: 10,
+                       bottom: 10,
                      ),
-                     child: Image.asset('images/30.png'),
+                     child: Container(
+                       height: 235.h,
+                       width: 370.w,
+                       decoration: BoxDecoration(
+                           color: Colors.white,
+                           borderRadius: BorderRadius.circular(15.r),
+                         boxShadow: [
+                           BoxShadow(
+                             color: Colors.grey.withOpacity(0.5),
+                             spreadRadius: 1,
+                             blurRadius: 2,
+                             offset: Offset(0, 2), // changes position of shadow
+                           ),
+                         ],
+                       ),
+                       child: Image.asset('images/30.png'),
+                     ),
                    ),
                  ),
-                 Padding(
-                   padding: const EdgeInsets.only(
-                     left: 10,
-                     right: 10,
-                     top: 10,
-                     bottom: 10,
-                   ),
-                   child: Container(
-                     height: 235.h,
-                     width: 370.w,
-                     decoration: BoxDecoration(
-                       color: Colors.white,
-                       borderRadius: BorderRadius.circular(15.r),
-                       boxShadow: [
-                         BoxShadow(
-                           color: Colors.grey.withOpacity(0.5),
-                           spreadRadius: 1,
-                           blurRadius: 2,
-                           offset: Offset(0, 2), // changes position of shadow
-                         ),
-                       ],
+                 InkWell(
+                   onTap: (){
+                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                       return AdvertisementDetails2();
+                     }));
+                   },
+                   child: Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
+                       top: 10,
+                       bottom: 10,
                      ),
-                     child: Image.asset('images/30.png'),
+                     child: Container(
+                       height: 235.h,
+                       width: 370.w,
+                       decoration: BoxDecoration(
+                         color: Colors.white,
+                         borderRadius: BorderRadius.circular(15.r),
+                         boxShadow: [
+                           BoxShadow(
+                             color: Colors.grey.withOpacity(0.5),
+                             spreadRadius: 1,
+                             blurRadius: 2,
+                             offset: Offset(0, 2), // changes position of shadow
+                           ),
+                         ],
+                       ),
+                       child: Image.asset('images/30.png'),
+                     ),
                    ),
                  ),
 

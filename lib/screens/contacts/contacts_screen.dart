@@ -26,75 +26,62 @@ class _ContactsScreenState extends State<ContactsScreen> {
         ),
         leading: Icon(Icons.arrow_back,color: Color.fromRGBO(24, 50, 75, 1),),
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Container(
-            height: 500,
-            width: double.infinity,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20,),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Spacer(),
-                        Container(
-                          height: 50,
-                          width: 200,
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(24, 50, 75, 1),
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
-                        ),
-                      ],
-                    ),
+          // SizedBox(height: 20,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Spacer(),
+                Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(24, 50, 75, 1),
+                      borderRadius: BorderRadius.circular(10)
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 200,
-                          decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: Center(child: Text('Hello How Are You ? ')),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Spacer(),
-                        Container(
-                          height: 50,
-                          width: 200,
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(24, 50, 75, 1),
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
-                        ),
-                      ],
-                    ),
-                  ),
-
-
-
-                ],
-              ),
+                  child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
+                ),
+              ],
             ),
           ),
-          Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Center(child: Text('Hello How Are You ? ')),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Spacer(),
+                Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(24, 50, 75, 1),
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
+                ),
+              ],
+            ),
+          ),
+
+          SizedBox(height: 400,),
+          // Spacer(),
           Padding(
               padding: const EdgeInsets.only(
                   bottom: 60,
