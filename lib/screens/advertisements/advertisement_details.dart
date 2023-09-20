@@ -100,7 +100,8 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Image.asset('images/star.png'),
+                        child: Icon(Icons.star,color: Color(0xFFFF9F00),),
+                        // child: Image.asset('images/star.png'),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -122,7 +123,7 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                     padding: const EdgeInsets.all(18.0),
                     child: Row(
                       children: [
-                        Image.asset('images/location.png'),
+                        Icon(Icons.pin_drop_outlined,size: 30.sp,),
                         SizedBox(
                           width: 10.w,
                         ),
@@ -141,7 +142,8 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                     padding: const EdgeInsets.only(right: 18),
                     child: Row(
                       children: [
-                        Image.asset('images/timer.png'),
+                        Icon(Icons.timer_outlined,size: 30.sp,),
+
                         SizedBox(
                           width: 10.w,
                         ),
@@ -160,7 +162,7 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                     padding: const EdgeInsets.only(right: 18, top: 30),
                     child: Row(
                       children: [
-                        Image.asset('images/ticket.png'),
+                        Icon(Icons.airplane_ticket_outlined,size: 30.sp,color: Color.fromRGBO(217, 63, 63, 1),),
                         SizedBox(
                           width: 10.w,
                         ),
@@ -179,7 +181,8 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                     padding: const EdgeInsets.only(right: 18, top: 30),
                     child: Row(
                       children: [
-                        Image.asset('images/persent.png'),
+                        Icon(Icons.percent_outlined,size: 30.sp,color: Color.fromRGBO(0, 150, 76, 1),),
+
                         SizedBox(
                           width: 10.w,
                         ),
@@ -282,32 +285,17 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.only(
-                                                right: 40.w,
+                                                right: 25.w,
                                               ),
                                               child: Column(
                                                 children: [
                                                   Row(
                                                     children: [
-                                                      Image.asset(
-                                                        'images/star.png',
-                                                        height: 20,
-                                                      ),
-                                                      Image.asset(
-                                                        'images/star.png',
-                                                        height: 20,
-                                                      ),
-                                                      Image.asset(
-                                                        'images/star.png',
-                                                        height: 20,
-                                                      ),
-                                                      Image.asset(
-                                                        'images/star.png',
-                                                        height: 20,
-                                                      ),
-                                                      Image.asset(
-                                                        'images/star.png',
-                                                        height: 20,
-                                                      ),
+                                                      Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                      Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                      Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                      Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                      Icon(Icons.star,color: Color(0xFFFF9F00),),
                                                       SizedBox(
                                                         width: 10,
                                                       ),
@@ -326,28 +314,11 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                                                     ),
                                                     child: Row(
                                                       children: [
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          // color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                        ),
+                                                        Icon(Icons.star,color: Colors.transparent,),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
                                                         SizedBox(
                                                           width: 10,
                                                         ),
@@ -367,29 +338,12 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                                                     ),
                                                     child: Row(
                                                       children: [
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          // color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                        ),
+                                                        Icon(Icons.star,color:Colors.transparent),
+                                                        Icon(Icons.star,color:Colors.transparent),
+
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
                                                         SizedBox(
                                                           width: 10,
                                                         ),
@@ -409,30 +363,11 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                                                     ),
                                                     child: Row(
                                                       children: [
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          // color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                        ),
+                                                        Icon(Icons.star,color: Colors.transparent,),
+                                                        Icon(Icons.star,color: Colors.transparent,),
+                                                        Icon(Icons.star,color: Colors.transparent,),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
                                                         SizedBox(
                                                           width: 10,
                                                         ),
@@ -452,31 +387,11 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                                                     ),
                                                     child: Row(
                                                       children: [
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          color: Colors.transparent,
-                                                        ),
-                                                        Image.asset(
-                                                          'images/star.png',
-                                                          height: 20,
-                                                          // color: Colors.transparent,
-                                                        ),
+                                                        Icon(Icons.star,color: Colors.transparent),
+                                                        Icon(Icons.star,color: Colors.transparent),
+                                                        Icon(Icons.star,color: Colors.transparent),
+                                                        Icon(Icons.star,color: Colors.transparent),
+                                                        Icon(Icons.star,color: Color(0xFFFF9F00),),
                                                         SizedBox(
                                                           width: 10,
                                                         ),
@@ -523,27 +438,27 @@ class _AdvertisementDetailsState extends State<AdvertisementDetails> {
                                                 Padding(
                                                   padding: const EdgeInsets.all(4.0),
                                                   child:
-                                                  Image.asset('images/star_outline.png'),
+                                                  Icon(Icons.star_outline,color: Color(0xFFFF9F00),),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.all(4.0),
                                                   child:
-                                                  Image.asset('images/star_outline.png'),
+                                                  Icon(Icons.star_outline,color: Color(0xFFFF9F00),),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.all(4.0),
                                                   child:
-                                                  Image.asset('images/star_outline.png'),
+                                                  Icon(Icons.star_outline,color: Color(0xFFFF9F00),),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.all(4.0),
                                                   child:
-                                                  Image.asset('images/star_outline.png'),
+                                                  Icon(Icons.star_outline,color: Color(0xFFFF9F00),),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.all(4.0),
                                                   child:
-                                                  Image.asset('images/star_outline.png'),
+                                                  Icon(Icons.star_outline,color: Color(0xFFFF9F00),),
                                                 ),
                                               ],
                                             ),

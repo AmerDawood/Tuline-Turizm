@@ -18,35 +18,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // CarouselController _carouselController = CarouselController();
-  // bool _autoPlayToRight = true; // Set to true to start auto-play to the right
-  // int _currentIndex = 0; // Keep track of the current index
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _startAutoPlay();
-  // }
-  //
-  // void _startAutoPlay() {
-  //   Future.delayed(const Duration(seconds: 2), () {
-  //     if (_autoPlayToRight) {
-  //       // Check if we are not at the last item
-  //       if (_currentIndex < 4) {
-  //         _carouselController.nextPage();
-  //         _currentIndex++;
-  //       } else {
-  //         // Stop auto-play when we reach the last item
-  //         _autoPlayToRight = false;
-  //       }
-  //     }
-  //     // Continue auto-play if _autoPlayToRight is true
-  //     if (_autoPlayToRight) {
-  //       _startAutoPlay();
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
 
@@ -55,11 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      // drawer: CustomDrawer(),
-      // drawerEnableOpenDragGesture: true,
-
       body: SingleChildScrollView(
-        // physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         child: Column(
 
@@ -90,9 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 IconButton(
                                   onPressed: () {
                                     Scaffold.of(context).openDrawer();
-
-                                    // _scaffoldKey.currentState?.openDrawer();
-                                  },
+                                    },
                                   icon: Icon(Icons.menu,color: Colors.white,),
                                 ),
                               ],
@@ -106,7 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       _showDialog(context);
                                     },
                                     child: Icon(Icons.location_on_outlined,size: 30,color: Color.fromRGBO(255, 123, 0, 1))),
-                                // Image.asset('images/location.png',color: Color.fromRGBO(255, 123, 0, 1),height: 30,),
                                 SizedBox(width: 5,),
                                 InkWell(
                                   onTap: ()
@@ -199,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                 ),
                                                 SizedBox(width: 3,),
-                                                Image.asset('images/star.png',color: Colors.white,height: 15,)
+                                                Icon(Icons.star,color: Colors.white,size: 16.sp,)
                                               ],
                                             ),
                                           ),
@@ -276,246 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )
 
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 170,right: 20,left: 10),
-                //   child: SingleChildScrollView(
-                //     scrollDirection: Axis.horizontal,
-                //     child: Row(
-                //       children: [
-                //         InkWell(
-                //           onTap: (){
-                //             Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
-                //               return AdvertisementDetails();
-                //             }));
-                //           },
-                //           child: Padding(
-                //             padding: const EdgeInsets.all(8.0),
-                //             child: Container(
-                //               height: 300,
-                //               width: 230,
-                //               decoration: BoxDecoration(
-                //                 // color: Colors.red,
-                //                   borderRadius: BorderRadius.circular(25)
-                //               ),
-                //               child: Stack(
-                //
-                //                 children: [
-                //                   Image.asset('images/new_van.jpeg',fit: BoxFit.cover,height: double.infinity,),
-                //
-                //                   Padding(
-                //                     padding: const EdgeInsets.all(18.0),
-                //                     child: Row(
-                //                       children: [
-                //                         Spacer(),
-                //
-                //                         Container(
-                //                           height: 20,
-                //                           width: 50,
-                //                           decoration: BoxDecoration(
-                //                               borderRadius: BorderRadius.circular(50),
-                //                               color: Color.fromRGBO(255, 123, 0,1)
-                //                           ),
-                //                           child: Row(
-                //                             mainAxisAlignment: MainAxisAlignment.center,
-                //                             children: [
-                //                               Text('0',
-                //                                 style: GoogleFonts.inter(
-                //                                   color: Colors.white,
-                //                                   fontSize: 14,
-                //                                 ),
-                //                               ),
-                //                               SizedBox(width: 3,),
-                //                               Image.asset('images/star.png',color: Colors.white,height: 15,)
-                //                             ],
-                //                           ),
-                //                         ),
-                //                       ],
-                //                     ),
-                //                   ),
-                //
-                //                   Positioned(
-                //                       bottom: 0,
-                //                       child: Container(height: 70,width: 230,
-                //                         // color: Colors.red,
-                //                         child: Padding(
-                //                           padding: const EdgeInsets.only(left: 12,right: 12),
-                //                           child: Row(
-                //                             children: [
-                //
-                //                               Text('استقبال وتوديع',
-                //                                 style: GoogleFonts.inter(
-                //                                     color: Colors.white,
-                //                                     fontSize: 18,
-                //                                     fontWeight: FontWeight.w700
-                //                                 ),
-                //                               ),
-                //                               Spacer(),
-                //                               Column(
-                //                                 children: [
-                //                                   SizedBox(height: 5,),
-                //                                   Text('ابتداءً من',
-                //                                     style: GoogleFonts.inter(
-                //                                         color: Colors.white,
-                //                                         fontSize: 14,
-                //                                         fontWeight: FontWeight.w700
-                //                                     ),
-                //                                   ),
-                //                                   SizedBox(height: 6,),
-                //                                   Container(
-                //                                     height:30,
-                //                                     width: 60,
-                //                                     decoration: BoxDecoration(
-                //                                       color: Color.fromRGBO(0, 125, 251, 1),
-                //                                       borderRadius: BorderRadius.circular(20),
-                //                                     ),
-                //                                     child: Center(
-                //                                       child: Text('45 usd',
-                //                                         style: GoogleFonts.inter(
-                //                                             color: Colors.white,
-                //                                             fontSize: 14,
-                //                                             fontWeight: FontWeight.w700
-                //                                         ),
-                //                                       ),
-                //                                     ),
-                //                                   ),
-                //                                 ],
-                //                               )
-                //                             ],
-                //                           ),
-                //                         ),
-                //                       ))
-                //
-                //
-                //
-                //
-                //                 ],
-                //               ),
-                //               clipBehavior: Clip.antiAlias,
-                //
-                //
-                //             ),
-                //           ),
-                //         ),
-                //         InkWell(
-                //           onTap: (){
-                //             Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
-                //               return AdvertisementDetails();
-                //             }));
-                //           },
-                //           child: Padding(
-                //             padding: const EdgeInsets.all(8.0),
-                //             child: Container(
-                //               height: 300,
-                //               width: 230,
-                //               decoration: BoxDecoration(
-                //                 // color: Colors.red,
-                //                   borderRadius: BorderRadius.circular(25)
-                //               ),
-                //               child: Stack(
-                //
-                //                 children: [
-                //                   Image.asset('images/new_van.jpeg',fit: BoxFit.cover,height: double.infinity,),
-                //
-                //                   Padding(
-                //                     padding: const EdgeInsets.all(18.0),
-                //                     child: Row(
-                //                       children: [
-                //                         Spacer(),
-                //
-                //                         Container(
-                //                           height: 20,
-                //                           width: 50,
-                //                           decoration: BoxDecoration(
-                //                               borderRadius: BorderRadius.circular(50),
-                //                               color: Color.fromRGBO(255, 123, 0,1)
-                //                           ),
-                //                           child: Row(
-                //                             mainAxisAlignment: MainAxisAlignment.center,
-                //                             children: [
-                //                               Text('0',
-                //                                 style: GoogleFonts.inter(
-                //                                   color: Colors.white,
-                //                                   fontSize: 14,
-                //                                 ),
-                //                               ),
-                //                               SizedBox(width: 3,),
-                //                               Image.asset('images/star.png',color: Colors.white,height: 15,)
-                //                             ],
-                //                           ),
-                //                         ),
-                //                       ],
-                //                     ),
-                //                   ),
-                //
-                //                   Positioned(
-                //                       bottom: 0,
-                //                       child: Container(height: 70,width: 230,
-                //                         // color: Colors.red,
-                //                         child: Padding(
-                //                           padding: const EdgeInsets.only(left: 12,right: 12),
-                //                           child: Row(
-                //                             children: [
-                //
-                //                               Text('استقبال وتوديع',
-                //                                 style: GoogleFonts.inter(
-                //                                     color: Colors.white,
-                //                                     fontSize: 18,
-                //                                     fontWeight: FontWeight.w700
-                //                                 ),
-                //                               ),
-                //                               Spacer(),
-                //                               Column(
-                //                                 children: [
-                //                                   SizedBox(height: 5,),
-                //                                   Text('ابتداءً من',
-                //                                     style: GoogleFonts.inter(
-                //                                         color: Colors.white,
-                //                                         fontSize: 14,
-                //                                         fontWeight: FontWeight.w700
-                //                                     ),
-                //                                   ),
-                //                                   SizedBox(height: 6,),
-                //                                   Container(
-                //                                     height:30,
-                //                                     width: 60,
-                //                                     decoration: BoxDecoration(
-                //                                       color: Color.fromRGBO(0, 125, 251, 1),
-                //                                       borderRadius: BorderRadius.circular(20),
-                //                                     ),
-                //                                     child: Center(
-                //                                       child: Text('45 usd',
-                //                                         style: GoogleFonts.inter(
-                //                                             color: Colors.white,
-                //                                             fontSize: 14,
-                //                                             fontWeight: FontWeight.w700
-                //                                         ),
-                //                                       ),
-                //                                     ),
-                //                                   ),
-                //                                 ],
-                //                               )
-                //                             ],
-                //                           ),
-                //                         ),
-                //                       ))
-                //
-                //
-                //
-                //
-                //                 ],
-                //               ),
-                //               clipBehavior: Clip.antiAlias,
-                //
-                //
-                //             ),
-                //           ),
-                //         ),
-                //
-                //
-                //       ],
-                //     ),
-                //   ),
-                // ),
+
               ],
             ),
             Padding(
@@ -678,7 +403,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   SizedBox(width: 3,),
-                                  Image.asset('images/star.png',color: Colors.white,height: 15,)
+                                  Icon(Icons.star,color: Colors.white,size: 15.sp,)
+                                  // Image.asset('images/star.png',color: Colors.white,height: 15,)
                                 ],
                               ),
                             ),

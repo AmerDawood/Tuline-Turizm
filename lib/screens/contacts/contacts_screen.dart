@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:math';
 class ContactsScreen extends StatefulWidget {
   const ContactsScreen({Key? key}) : super(key: key);
 
@@ -9,6 +10,35 @@ class ContactsScreen extends StatefulWidget {
 }
 
 class _ContactsScreenState extends State<ContactsScreen> {
+  TextEditingController _textController = TextEditingController();
+  bool _isSending = false;
+
+  void toggleSendButton() {
+    setState(() {
+      _isSending = _textController.text.isNotEmpty;
+    });
+  }
+
+  void sendMessage() {
+    // Perform your send message action here.
+    // For example, you can print the text to the console.
+    print(_textController.text);
+    // Clear the text field and reset the button to microphone.
+    _textController.clear();
+    toggleSendButton();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _textController.addListener(toggleSendButton);
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,110 +60,84 @@ class _ContactsScreenState extends State<ContactsScreen> {
             },
             child: Icon(Icons.menu,color: Color.fromRGBO(24, 50, 75, 1),)),
       ),
-      body: ListView(
+      body: Column(
         children: [
-          SizedBox(height: 20,),
+          Spacer(),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Spacer(),
-                Container(
-                  height: 50,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(24, 50, 75, 1),
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Container(
-                  height: 50,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Center(child: Text('Hello How Are You ? ')),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Spacer(),
-                Container(
-                  height: 50,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(24, 50, 75, 1),
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Center(child: Text('Hi , Thank You :) ',style: GoogleFonts.inter(color: Colors.white),)),
-                ),
-              ],
-            ),
-          ),
-
-          SizedBox(height: 390,),
-
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Icon(Icons.keyboard_voice,color: Colors.white,),
-                ),
-              ),
-
-              SizedBox(width: 10,),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30), // Adjust the border radius as needed
-                  // border: Border.all(
-                  // // color: Colors.white,
-                  // width: 1.0,
-                  // ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 1,
-                              offset: Offset(0, 1), // changes position of shadow
-                            ),
-                          ],
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "اكتب رسالتك هنا...",
-                      prefixIcon: Icon(Icons.attach_file,color: Colors.grey,),
-                      border: InputBorder.none, // Remove the default border
-                      contentPadding: EdgeInsets.all(10), // Adjust the padding as needed
+            padding: const EdgeInsets.all(16.0),
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child:_isSending ?  Transform.rotate(
+                        angle: pi, // 180 درجة
+                        child: Icon(Icons.send,color: Colors.white,size: 20,)
+                      ):Icon(Icons.mic,color: Colors.white,)
                     ),
                   ),
-                ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Container(
+                  //       height: 40,
+                  //       width: 40,
+                  //       decoration: BoxDecoration(
+                  //         color: Colors.blue,
+                  //         borderRadius: BorderRadius.circular(20),
+                  //       ),
+                  //       child: _isSending ? Icon(Icons.send,color: Colors.white,) : Icon(Icons.mic,color: Colors.white,)
+                  //   ),
+                  // ),
+                  Expanded(
+                      child: Container(
+                        width: 322,
+                        height: 45,
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              width: 0.20,
+                              color: Color(0x5ED9D9D9),
+                            ),
+                            borderRadius: BorderRadius.circular(33),
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: Color(0x2B000000),
+                              blurRadius: 4,
+                              offset: Offset(0, 0),
+                              spreadRadius: 0,
+                            )
+                          ],
+                        ),
+                        child: TextField(
+                          controller: _textController,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'ادخل النص هنا',
+                            contentPadding: EdgeInsets.symmetric(horizontal: 15), // تعيين التباعد الداخلي للنص
+                          ),
+                        ),
+                      )
+                  ),
+
+                ],
               ),
-              SizedBox(width: 10,),
+            ),
+          ),
 
 
-            ],
-          )
+          SizedBox(
+            height: 10,
+          ),
 
 
 

@@ -117,8 +117,8 @@ class _CustomDrawerState extends State<CustomDrawer>  {
 
               SizedBox(height: 10,),
               Container(
-                height: 30,
-                width: 100,
+                height: 30.h,
+                width: 120.w,
                 decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(40)
@@ -332,7 +332,8 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                             ),
                           ),
                           Spacer(),
-                          Image.asset('images/wallet.png',color: Colors.white,)
+                          Icon(Icons.account_balance_wallet_outlined,color: Colors.white,)
+                          // Image.asset('images/wallet.png',color: Colors.white,)
                         ],
                       ),
                     ),
@@ -377,7 +378,8 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                             ),
                           ),
                           Spacer(),
-                          Image.asset('images/love.png',color: Colors.white)
+                          Icon(Icons.favorite_border_rounded,color: Colors.white,)
+                          // Image.asset('images/love.png',color: Colors.white)
 
                         ],
                       ),
@@ -422,7 +424,8 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                           ),
 
                           Spacer(),
-                          Image.asset('images/notification.png',color: Colors.white,height: 25,)
+                          Icon(Icons.notifications_none_sharp,color: Colors.white,)
+                          // Image.asset('images/notification.png',color: Colors.white,height: 25,)
 
                         ],
                       ),
@@ -576,7 +579,7 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                   ),
                   child: InkWell(
                     onTap: (){
-                      Navigator.pushReplacementNamed(context, '/privacy_screen');
+                      // Navigator.pushReplacementNamed(context, '/privacy_screen');
                     },
                     child: Container(
                       child: Row(
@@ -664,7 +667,8 @@ SizedBox(height: 20,),
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)
                       ),
-                      child: Image.asset('images/phone.png'),
+                      child: Icon(Icons.call,size: 30,),
+                      // child: Image.asset('images/phone.png'),
                     ),
                   ),
 
@@ -677,7 +681,8 @@ SizedBox(height: 20,),
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)
                       ),
-                      child: Image.asset('images/facebook.png',color: Color.fromRGBO(24, 50, 75, 1),),
+                      child: Icon(Icons.facebook_outlined,size: 40,),
+                      // child: Image.asset('images/facebook.png',color: Color.fromRGBO(24, 50, 75, 1),),
                     ),
                   ),
                 ],
