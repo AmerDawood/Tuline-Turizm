@@ -34,10 +34,10 @@ void main() {
            // locale: savedLocale != null ? Locale(savedLocale!) : null,
            // fallbackLocale: Locale('en', 'US'),
            debugShowCheckedModeBanner: false,
-           initialRoute: '/privacy_screen',
+           initialRoute: '/splash_screen',
            routes: {
-             '/app' : (context) => Home(),
              '/splash_screen' : (context) => SplashScreen(),
+             '/app' : (context) => Home(),
              '/advertisement_details' : (context) => AdvertisementDetails(),
              '/advertisement_details2' : (context) => AdvertisementDetails2(),
              '/wallet_screen' : (context) => walletScreen(),
@@ -45,7 +45,7 @@ void main() {
              '/about_screen' : (context) => AboutScreen(),
              '/signin_screen' : (context) => SignInScreen(),
              '/privacy_screen' : (context) => PrivacyScreen(),
-
+             '/test' : (context) => Test(),
 
            },
          );
