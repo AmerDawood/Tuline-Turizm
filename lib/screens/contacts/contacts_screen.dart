@@ -58,7 +58,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
                   height: 50,
                   width: 200,
                   decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
+                      color: Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(10)
                   ),
                   child: Center(child: Text('Hello How Are You ? ')),
@@ -84,7 +84,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
           ),
 
-          SizedBox(height: 400,),
+          SizedBox(height: 390,),
 
           Row(
             children: [

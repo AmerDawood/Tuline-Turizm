@@ -29,7 +29,9 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
           elevation: 1.0,
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/app');
+                },
                 icon: Icon(
                   Icons.arrow_forward_rounded,
                   color: Colors.black,

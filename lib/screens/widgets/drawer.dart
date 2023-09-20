@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tuline_turizm/screens/favorite/favorite_screen.dart';
 
 
 class CustomDrawer extends StatefulWidget {
@@ -10,6 +11,15 @@ class CustomDrawer extends StatefulWidget {
 
 class _CustomDrawerState extends State<CustomDrawer>  {
   String selectedLanguage = 'لغة التطبيق العربية';
+
+  bool isExpanded = false;
+
+  void toggleContainerVisibility() {
+    setState(() {
+      isExpanded = !isExpanded;
+    });
+  }
+
 
   // Default language
 
@@ -124,31 +134,94 @@ class _CustomDrawerState extends State<CustomDrawer>  {
               SizedBox(height: 20,),
 
 
-
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 18,
-                    right: 18,
-                  ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('اللغة / Language',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+              GestureDetector(
+                onTap: toggleContainerVisibility,
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 18,
+                      right: 18,
+                    ),
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text(
+                            'اللغة / Language',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          AnimatedSwitcher(
+                            duration: Duration(milliseconds: 500),
+                            child: isExpanded
+                                ? Icon(
+                              Icons.keyboard_arrow_up_sharp,
+                              color: Color.fromRGBO(255, 159, 0, 1),
+                              key: Key('up'),
+                            )
+                                : Icon(
+                              Icons.keyboard_arrow_down_sharp,
+                              color: Colors.white,
+                              key: Key('down'),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                height: isExpanded ? 50 : 0,
+                width: double.infinity,
+                child: Row(
+                  children: [
+                    Spacer(),
+                    Container(
+                      height: 30,
+                      width: 70,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        // color: Color.fromRGBO(255, 159, 0, 1),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                        child: Text('English',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 20,),
+                    Container(
+                      height: 30,
+                      width: 70,
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(255, 159, 0, 1),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                        child: Text('العربية',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 20,),
+
+                  ],
+                ),
+
+              ),
+
+
               Padding(
                 padding: const EdgeInsets.only(
                   left: 15,
@@ -180,7 +253,7 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                           ),
                         ),
                         Spacer(),
-                        Image.asset('images/arrow_under.png')
+                        Icon(Icons.keyboard_arrow_down_sharp,color: Colors.white,)
                       ],
                     ),
                   ),
@@ -244,19 +317,24 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('المحفظة',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context, '/wallet_screen');
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('المحفظة',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          Image.asset('images/wallet.png',color: Colors.white,)
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -281,19 +359,28 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('المفضلة',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      // Navigator.push(context, MaterialPageRoute(builder: (_){
+                      //   return FavoriteScreen();
+                      // }));
+                      // Navigator.pushReplacementNamed(context, '/favorite_screen');
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('المفضلة',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          Image.asset('images/love.png',color: Colors.white)
+
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -319,19 +406,26 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('العروض والتنبيهات',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context, '/notifications_screen');
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('العروض والتنبيهات',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+
+                          Spacer(),
+                          Image.asset('images/notification.png',color: Colors.white,height: 25,)
+
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -394,19 +488,24 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('اتفاقية الاستخدام وسياسة الخصوصية ',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context, '/privacy_screen');
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('اتفاقية الاستخدام وسياسة الخصوصية ',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          // Image.asset('images/arrow_under.png')
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -432,19 +531,24 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('عن التطبيق',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context, '/about_screen');
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('عن التطبيق',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          // Image.asset('images/arrow_under.png')
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -470,19 +574,24 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('شارك التطبيق ',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context, '/privacy_screen');
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('شارك التطبيق ',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          // Image.asset('images/arrow_under.png')
+                        ],
+                      ),
                     ),
                   ),
                 ),
