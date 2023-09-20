@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     options: CarouselOptions(
                       autoPlayInterval: Duration(seconds: 4),
                       height: 300.0,
-                      viewportFraction: 0.7,
+                      viewportFraction: 0.72,
                       autoPlay: true, // Set to false to handle auto-play manually
                       enableInfiniteScroll: true, // Set to false to stop at the last item
                       // onPageChanged: (index, _) {
