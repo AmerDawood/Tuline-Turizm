@@ -1,87 +1,60 @@
 import 'package:flutter/material.dart';
 
-class Test extends StatefulWidget {
-  @override
-  _TestState createState() => _TestState();
-}
 
-class _TestState extends State<Test> {
-  TextEditingController _textController = TextEditingController();
-  bool _isSending = false;
 
-  void toggleSendButton() {
-    setState(() {
-      _isSending = _textController.text.isNotEmpty;
-    });
-  }
-
-  void sendMessage() {
-    // Perform your send message action here.
-    // For example, you can print the text to the console.
-    print(_textController.text);
-    // Clear the text field and reset the button to microphone.
-    _textController.clear();
-    toggleSendButton();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _textController.addListener(toggleSendButton);
-  }
-
-  @override
-  void dispose() {
-    _textController.dispose();
-    super.dispose();
-  }
-
+class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Text Field with Icon'),
+        title: Text('Align at Bottom'),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _textController,
-                    decoration: InputDecoration(
-                      hintText: 'Type your message...',
-                    ),
-                  ),
+          Column(
+            children: [
+              Text('SZNfks'),
+              Text('SZNfks'),
+              // Add your other widgets here
+            ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: double.infinity,
+              height: 45,
+              decoration: ShapeDecoration(
+                color: Color(0xFF32C864),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(38),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      if (_isSending) {
-                        sendMessage();
-                      } else {
-                        // Perform voice recording or other action here.
-                      }
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Center(
-                        child: _isSending
-                            ? Icon(Icons.send, color: Colors.white)
-                            : Icon(Icons.mic, color: Colors.white),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 8,
+                  bottom: 8,
+                  left: 14,
+                  right: 14,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'إضافة المال إلى المحفظة',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ],
