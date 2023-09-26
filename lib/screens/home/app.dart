@@ -182,7 +182,7 @@ class Home extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         drawer: CustomDrawer(),
-        endDrawer: CustomDrawer(),
+        // endDrawer: CustomDrawer(),
         extendBody: true,
         // appBar: AppBar(
         //   backgroundColor: Color.fromRGBO(24, 50, 75, 1),

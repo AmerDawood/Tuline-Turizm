@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
+import 'package:tuline_turizm/screens/home/type_service/select_service_type.dart';
 
 import '../widgets/drawer.dart';
 
@@ -346,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Row(
                 children: [
-                  Text('استقبال وتوديع',
+                  Text('الأقسام',
                     style: GoogleFonts.inter(
                       color: Colors.black,
                       fontSize: 22.sp,
@@ -362,272 +363,232 @@ class _HomeScreenState extends State<HomeScreen> {
 
             InkWell(
               onTap: (){
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
-                  return AdvertisementDetails();
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                  return SelectServiceType();
                 }));
               },
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 300,
-                  width: 400.w,
-                  decoration: BoxDecoration(
-                    // color: Colors.red,
-                      borderRadius: BorderRadius.circular(25)
-                  ),
-                  child: Stack(
-
-                    children: [
-                      Image.asset('images/new_van.jpeg',fit: BoxFit.cover,height: double.infinity,),
-
-                      Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: Row(
-                          children: [
-                            Spacer(),
-
-                            Container(
-                              height: 20,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Color.fromRGBO(255, 123, 0,1)
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('0',
-                                    style: GoogleFonts.inter(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                  SizedBox(width: 3,),
-                                  Icon(Icons.star,color: Colors.white,size: 15.sp,)
-                                  // Image.asset('images/star.png',color: Colors.white,height: 15,)
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                padding: const EdgeInsets.all(10.0),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        'images/img.png',
+                        width: double.infinity,
+                        height: 110.0,
+                        fit: BoxFit.cover,
                       ),
-
-                      Positioned(
-                          bottom: 0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(10),
-                                topLeft: Radius.circular(10),
-                              ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 3,
-                                        blurRadius: 4,
-                                        offset: Offset(0, 4), // changes position of shadow
-                                      ),
-                                    ],
-
-                              color: Colors.grey.shade50,
-
-
-                            ),
-                            height: 70,
-                            width: 375.w,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 40,right: 40),
-                              child: Row(
-                                children: [
-                                  Text('استقبال وتوديع',
-                                    style: GoogleFonts.inter(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Column(
-                                    children: [
-                                      SizedBox(height: 5,),
-                                      Text('ابتداءً من',
-                                        style: GoogleFonts.inter(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700
-                                        ),
-                                      ),
-                                      SizedBox(height: 6,),
-                                      Container(
-                                        height:30,
-                                        width: 60,
-                                        decoration: BoxDecoration(
-                                          color: Color.fromRGBO(0, 125, 251, 1),
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        child: Center(
-                                          child: Text('45 usd',
-                                            style: GoogleFonts.inter(
-                                                color: Colors.white,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w700
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ))
-
-
-
-
-                    ],
-                  ),
-                  clipBehavior: Clip.antiAlias,
-
-
-                ),
-              ),
-            ),
-
-            InkWell(
-              onTap: (){
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (_){
-                  return AdvertisementDetails();
-                }));
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 300,
-                  width: 400.w,
-                  decoration: BoxDecoration(
-                    // color: Colors.red,
-                      borderRadius: BorderRadius.circular(25)
-                  ),
-                  child: Stack(
-
-                    children: [
-                      Image.asset('images/new_van.jpeg',fit: BoxFit.cover,height: double.infinity,),
-
-                      Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: Row(
-                          children: [
-                            Spacer(),
-
-                            Container(
-                              height: 20,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Color.fromRGBO(255, 123, 0,1)
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('0',
-                                    style: GoogleFonts.inter(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                  SizedBox(width: 3,),
-                                  Image.asset('images/star.png',color: Colors.white,height: 15,)
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Positioned(
-                          bottom: 0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(10),
-                                topLeft: Radius.circular(10),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 3,
+                    ),
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      child: Center(
+                          child: Text(
+                            'الاستقبال والتوديع',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 40,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w500,
+                              shadows: [
+                                Shadow(
+                                  color: Color(0xFF000000),
+                                  offset: Offset(1, 0),
+                                  blurRadius: 15,
+                                ),
+                                Shadow(
+                                  color: Color(0x3F000000),
+                                  offset: Offset(1, -1),
                                   blurRadius: 4,
-                                  offset: Offset(0, 4), // changes position of shadow
+                                ),
+                                Shadow(
+                                  color: Color(0x3F000000),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 4,
+                                ),
+                                Shadow(
+                                  color: Color(0x3F000000),
+                                  offset: Offset(-3, 4),
+                                  blurRadius: 4,
                                 ),
                               ],
-
-                              color: Colors.grey.shade50,
-
-
                             ),
-                            height: 70,
-                            width: 375.w,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 40,right: 40),
-                              child: Row(
-                                children: [
-                                  Text('استقبال وتوديع',
-                                    style: GoogleFonts.inter(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Column(
-                                    children: [
-                                      SizedBox(height: 5,),
-                                      Text('ابتداءً من',
-                                        style: GoogleFonts.inter(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700
-                                        ),
-                                      ),
-                                      SizedBox(height: 6,),
-                                      Container(
-                                        height:30,
-                                        width: 60,
-                                        decoration: BoxDecoration(
-                                          color: Color.fromRGBO(0, 125, 251, 1),
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        child: Center(
-                                          child: Text('45 usd',
-                                            style: GoogleFonts.inter(
-                                                color: Colors.white,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w700
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ))
-
-
-
-
-                    ],
-                  ),
-                  clipBehavior: Clip.antiAlias,
-
-
+                            textAlign: TextAlign.right,
+                          )),
+                    ),
+                  ],
                 ),
               ),
             ),
 
-
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      'images/img.png',
+                      width: double.infinity,
+                      height: 110.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Center(
+                        child: Text(
+                          'الرحلات',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            shadows: [
+                              Shadow(
+                                color: Color(0xFF000000),
+                                offset: Offset(1, 0),
+                                blurRadius: 15,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(1, -1),
+                                blurRadius: 4,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(2, 4),
+                                blurRadius: 4,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(-3, 4),
+                                blurRadius: 4,
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.right,
+                        )),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      'images/img.png',
+                      width: double.infinity,
+                      height: 110.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Center(
+                        child: Text(
+                          'قسم جديد',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            shadows: [
+                              Shadow(
+                                color: Color(0xFF000000),
+                                offset: Offset(1, 0),
+                                blurRadius: 15,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(1, -1),
+                                blurRadius: 4,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(2, 4),
+                                blurRadius: 4,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(-3, 4),
+                                blurRadius: 4,
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.right,
+                        )),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      'images/img.png',
+                      width: double.infinity,
+                      height: 110.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Center(
+                        child: Text(
+                          'الخدمات',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            shadows: [
+                              Shadow(
+                                color: Color(0xFF000000),
+                                offset: Offset(1, 0),
+                                blurRadius: 15,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(1, -1),
+                                blurRadius: 4,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(2, 4),
+                                blurRadius: 4,
+                              ),
+                              Shadow(
+                                color: Color(0x3F000000),
+                                offset: Offset(-3, 4),
+                                blurRadius: 4,
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.right,
+                        )),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -5,6 +5,8 @@ import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart
 import 'package:tuline_turizm/screens/auth/signin_screen.dart';
 import 'package:tuline_turizm/screens/favorite/favorite_screen.dart';
 import 'package:tuline_turizm/screens/home/app.dart';
+import 'package:tuline_turizm/screens/maps/location_details.dart';
+import 'package:tuline_turizm/screens/maps/my_locations.dart';
 import 'package:tuline_turizm/screens/notifications/offer_screen.dart';
 import 'package:tuline_turizm/screens/settings/about/about_screen.dart';
 import 'package:tuline_turizm/screens/settings/privacy/privacy_screen.dart';
@@ -49,7 +51,9 @@ void main() {
              '/privacy_screen' : (context) => PrivacyScreen(),
              '/favorite_screen' : (context) => FavoriteScreen(),
              '/add_wallet' : (context) => AddWallet(),
-             '/test' : (context) => Test(),
+             '/maps_screen' : (context) => LocationDetails(),
+             '/my_locations' : (context) => MyLocations(),
+             '/test' : (context) => Test3(),
 
            },
          );

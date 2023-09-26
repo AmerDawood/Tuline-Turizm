@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tuline_turizm/screens/favorite/favorite_screen.dart';
 
+import '../auth/signin_screen.dart';
+
 
 class CustomDrawer extends StatefulWidget {
   @override
@@ -116,21 +118,41 @@ class _CustomDrawerState extends State<CustomDrawer>  {
               ),
 
               SizedBox(height: 10,),
-              Container(
-                height: 30.h,
-                width: 120.w,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(40)
-                ),
-                child: Center(
-                  child: Text('USD  0: المحفظة',
-                  style: GoogleFonts.inter(
-                    color: Colors.white,
+              InkWell(
+               onTap: (){
+                 _showLoginDialog(context);
+               },
+                child: Container(
+                  height: 30.h,
+                  width: 120.w,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(40)
                   ),
+                  child: Center(
+                    child: Text('تسجيل الدخول',
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),
+              // Container(
+              //   height: 30.h,
+              //   width: 120.w,
+              //   decoration: BoxDecoration(
+              //       color: Colors.blue,
+              //       borderRadius: BorderRadius.circular(40)
+              //   ),
+              //   child: Center(
+              //     child: Text('USD  0: المحفظة',
+              //     style: GoogleFonts.inter(
+              //       color: Colors.white,
+              //     ),
+              //     ),
+              //   ),
+              // ),
               SizedBox(height: 20,),
 
 
@@ -622,19 +644,24 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('تسجيل خروج',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      _showLogoutDialog(context);
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('تسجيل خروج',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          // Image.asset('images/arrow_under.png')
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -781,4 +808,256 @@ class ListTileWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showLogoutDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          width: double.infinity,
+          height: 300,
+          decoration: ShapeDecoration(
+            color: Colors.white,
+            // color: const Color.fromARGB(255, 243, 99, 99),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("images/5.png"),
+                  SizedBox(
+                    height: 17.0,
+                  ),
+                  Text(
+                    'تسجيل خروج ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF18324B),
+                      fontSize: 20,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    'هل تريد حقا تسجيل الخروج',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF314152),
+                      fontSize: 18,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 10,
+                      right: 10,top: 20,
+                    ),
+                    child: Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            print('تم النقر على الزر');
+                          },
+                          child: Container(
+                            width: 147.34,
+                            height: 42.96,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF007DFB),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'تسجيل خروج',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: 147.34,
+                            height: 42.96,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(30.0),
+                              border: Border.all(
+                                width: 1,
+                                color: Color(0xFF9FB4C7),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'لا',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF007DFB),
+                                  fontSize: 15,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ]),
+          ),
+        )
+      );
+    },
+  );
+}
+
+void _showLoginDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          child: Container(
+            width: double.infinity,
+            height: 300,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              // color: const Color.fromARGB(255, 243, 99, 99),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset("images/10.png"),
+                    SizedBox(
+                      height: 17.0,
+                    ),
+                    Text(
+                      'تسجيل الدخول',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF18324B),
+                        fontSize: 20,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'يرجى تسجيل الدخول',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF314152),
+                        fontSize: 18,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                        right: 10,top: 20,
+                      ),
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                             Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                               return SignInScreen();
+                             }));
+                            },
+                            child: Container(
+                              width: 147.34,
+                              height: 42.96,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF007DFB),
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'تسجيل الدخول',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
+                                    height: 0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              width: 147.34,
+                              height: 42.96,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(30.0),
+                                border: Border.all(
+                                  width: 1,
+                                  color: Color(0xFF9FB4C7),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'لا',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xFF007DFB),
+                                    fontSize: 15,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
+                                    height: 0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ]),
+            ),
+          )
+      );
+    },
+  );
 }

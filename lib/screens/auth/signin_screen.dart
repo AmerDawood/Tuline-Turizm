@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tuline_turizm/screens/home/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -70,7 +71,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      // Navigator.push(context, MaterialPageRoute(builder: (_){
+                      //   return HomeScreen();
+                      // }));
+                    },
                     child: Container(
                       width: 95,
                       height: 33,
