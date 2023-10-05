@@ -127,14 +127,15 @@ class _ContactsScreenState extends State<ContactsScreen> {
                       child: TextField(
                         controller: _textController,
                         decoration: InputDecoration(
-                          prefix: IconButton(
-                            icon: Icon(Icons.attach_file),
-                            onPressed: () {
-                              setState(() {
-                                isContainerOpen = !isContainerOpen;
-                              });
-                            },
-                          ),
+                          // prefix: Icon(Icons.attach_file),
+                          // prefix: IconButton(
+                          //   icon: Icon(Icons.attach_file),
+                          //   onPressed: () {
+                          //     setState(() {
+                          //       isContainerOpen = !isContainerOpen;
+                          //     });
+                          //   },
+                          // ),
                           border: InputBorder.none,
                           hintText: 'ادخل النص هنا',
                           contentPadding: EdgeInsets.symmetric(
@@ -151,18 +152,18 @@ class _ContactsScreenState extends State<ContactsScreen> {
           SizedBox(
             height: 10,
           ),
-          Visibility(
-            visible: isContainerOpen,
-            child: Container(
-              // Your container content goes here
-              width: double.infinity,
-              height: 200,
-              color: Colors.blue,
-              child: Center(
-                child: Text('Attachment Container'),
-              ),
-            ),
-          ),
+          // Visibility(
+          //   visible: isContainerOpen,
+          //   child: Container(
+          //     // Your container content goes here
+          //     width: double.infinity,
+          //     height: 200,
+          //     color: Colors.blue,
+          //     child: Center(
+          //       child: Text('Attachment Container'),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

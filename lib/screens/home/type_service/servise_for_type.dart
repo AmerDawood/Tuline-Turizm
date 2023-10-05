@@ -31,9 +31,16 @@ class _ServiceForTypeState extends State<ServiceForType> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: (){
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+              return HomeScreen();
+            }));
+          },
         ),
       ),
       body: Align(

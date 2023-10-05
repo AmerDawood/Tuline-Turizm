@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tuline_turizm/api/controller/home_api_controller.dart';
+import 'package:tuline_turizm/models/home.dart';
 
 class Test3 extends StatefulWidget {
   const Test3({Key? key}) : super(key: key);
@@ -8,225 +10,213 @@ class Test3 extends StatefulWidget {
 }
 
 class _Test3State extends State<Test3> {
+
+
+  int? areaId;
+
+
+  List<Home?> _home = <Home?>[];
+  late Future<Home?> _future;
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    _future = HomeApiController().getHomeData(null);
+
+    _future.then((home) {
+      if (home != null) {
+        print("Home Data: $home");
+
+      } else {
+        print("Home Data is null");
+      }
+    }).catchError((error) {
+      print("Error fetching Home Data: $error");
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        title: Text(
-          'بيانات الموقع',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Color(0xFF18324B),
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        title: Text('Service List'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: FutureBuilder<Home?>(
+        future: _future,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator(); // Display a loading indicator while fetching data
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else if (!snapshot.hasData || snapshot.data == null) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('No data available'),
+            ); // Handle no data case
+          } else {
+            final homeData = snapshot.data!;
+            final services = homeData.services;
+            final offers = homeData.offers;
+            final sliders = homeData.sliders;
+
+            return Column(
               children: [
-                Container(
-                  width: double.infinity,
-                  height: 300,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFF18324B),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+              SizedBox(
+              height: 200,
+              child: ListView.builder(
+                itemCount: services!.length,
+                itemBuilder: (context, index) {
+                  final serviceName = services[index].name ?? 'No Name';
+                  return ListTile(
+                    title: Text(serviceName),
+                    leading: Image.network('https://tulineapp.almirsystem.com/uploads/services/${services[index].image}'),
+                  );
+                },
+              ),
+            ),
+          SizedBox(
+          height: 200,
+          child: ListView.builder(
+          itemCount: offers!.length,
+          itemBuilder: (context, index) {
+          final offerName = offers[index].name ?? 'No Name';
+          return ListTile(
+          title: Text(offerName),
+          );
+          },
+          ),
+          ),
+                SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    itemCount: sliders!.length,
+                    itemBuilder: (context, index) {
+                      final sliderName = sliders[index].name ?? 'No Name';
+                      return ListTile(
+                        title: Text(sliderName),
+                      );
+                    },
                   ),
                 ),
-                SizedBox(
-                  height: 8.0,
+
+                ElevatedButton(
+                  onPressed: () {
+                    _showNumberChangeDialog(context);
+                  },
+                  child: Text('Change Area ID'),
                 ),
-                Container(
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'تفاصيل العنوان ',
-                        style: TextStyle(
-                          color: Color(0xFF18324B),
-                          fontSize: 20,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 42,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFF5F5FF),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'العنوان',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C959E),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(right: 20),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 42,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFF5F5FF),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'المحافظة',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C959E),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(right: 20),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 42,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFF5F5FF),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'المدينة',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C959E),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(right: 20),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 42,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFF5F5FF),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'الشارع',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C959E),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(right: 20),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 42,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFF5F5FF),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'اقرب مكان',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF8C959E),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(right: 20),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12.0,
+
+              ],
+            );
+          }
+        },
+      ),
+    );
+
+  }
+  void _showNumberChangeDialog(BuildContext context) async {
+    final newAreaId = await showDialog<int>(
+      context: context,
+      builder: (context) {
+        return NumberChangeDialog(
+          initialValue: areaId,
+          onAreaIdChanged: (newId) {
+            // Update the areaId when the callback is called
+            setState(() {
+              areaId = newId;
+            });
+          },
+        );
+      },
+    );
+
+    if (newAreaId != null) {
+      // Handle the new areaId here if needed
+      print('New areaId: $newAreaId');
+
+      // Reload the data with the updated areaId
+      setState(() {
+        _future = HomeApiController().getHomeData(areaId);
+      });
+    }
+  }
+
+
+
+}
+class NumberChangeDialog extends StatefulWidget {
+  final int? initialValue;
+  final void Function(int) onAreaIdChanged;
+
+  NumberChangeDialog({this.initialValue, required this.onAreaIdChanged});
+
+  @override
+  _NumberChangeDialogState createState() => _NumberChangeDialogState();
+}
+
+class _NumberChangeDialogState extends State<NumberChangeDialog> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialValue?.toString());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Change Area ID'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: _controller,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'New Area ID'),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          child: Text('Cancel'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        TextButton(
+          child: Text('Save'),
+          onPressed: () {
+            final newAreaId = int.tryParse(_controller.text);
+
+            if (newAreaId != null) {
+              widget.onAreaIdChanged(newAreaId); // Call the callback to update areaId
+              Navigator.of(context).pop(newAreaId);
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text('Invalid Input'),
+                    content: Text('Please enter a valid number for Area ID.'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('OK'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
                     ],
-                  ),
-                )
-              ],
-            ),
-          ),
+                  );
+                },
+              );
+            }
+          },
         ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF32C864),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(38),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'إضافة عنوان آخر',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-            ],
-          ),
-        ),
-      ),
+      ],
     );
   }
 }

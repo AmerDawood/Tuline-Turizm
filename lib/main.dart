@@ -38,7 +38,7 @@ void main() {
            // locale: savedLocale != null ? Locale(savedLocale!) : null,
            // fallbackLocale: Locale('en', 'US'),
            debugShowCheckedModeBanner: false,
-           initialRoute: '/splash_screen',
+           initialRoute: '/test',
            routes: {
              '/splash_screen' : (context) => SplashScreen(),
              '/app' : (context) => Home(),
