@@ -6,6 +6,10 @@ class ApiSettings {
   static const AREA = _API_URL + 'areas';
   static const SECTION = _API_URL + 'sections';
   static const SERVICES = _API_URL + 'services';
+  static const MY_FAVORITE = _API_URL + 'favorite-services';
+  static const PRIVACY = _API_URL + 'privacy';
+  static const FAQs = _API_URL + 'faqs';
+  static const ABOUT = _API_URL + 'aboutApp';
 
 
   static const LOGIN = _API_URL + 'login';

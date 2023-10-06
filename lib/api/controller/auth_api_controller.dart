@@ -12,11 +12,11 @@ class AuthApiController with Helpers {
     var url = Uri.parse(ApiSettings.LOGIN);
     var response =
     await http.post(url, body: {'email': email, 'password': password});
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
       // print(jsonResponse['token']);
-      User user = User.fromJson(jsonResponse['object']);
-      UserPreferenceController().saveUser(user: user);
+      User user = User.fromJson(jsonResponse['user']);
+      UserPreferenceController().saveUser(user: user,token: jsonResponse['token']);
       return true;
     } else if (response.statusCode == 400) {
       //
@@ -30,7 +30,7 @@ class AuthApiController with Helpers {
     required String fullName,
     required String email,
     required String password,
-    required String password_confirmation,
+    // required String password_confirmation,
     // required String type,
   }) async {
     try {
@@ -40,11 +40,11 @@ class AuthApiController with Helpers {
         'name': fullName,
         'email': email,
         'password': password,
-        'password_confirmation': password_confirmation,
+        // 'password_confirmation': password_confirmation,
         // 'type': type,
       });
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         showSnackBar(
             context: context,
             message: 'User Created Successfully',

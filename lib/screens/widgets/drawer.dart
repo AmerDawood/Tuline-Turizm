@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tuline_turizm/perfs/user_preference_controller.dart';
 import 'package:tuline_turizm/screens/favorite/favorite_screen.dart';
+import 'package:tuline_turizm/screens/home/app.dart';
+import 'package:tuline_turizm/utils/helpers.dart';
 
 import '../auth/signin_screen.dart';
 
@@ -11,7 +15,7 @@ class CustomDrawer extends StatefulWidget {
   State<CustomDrawer> createState() => _CustomDrawerState();
 }
 
-class _CustomDrawerState extends State<CustomDrawer>  {
+class _CustomDrawerState extends State<CustomDrawer>  with Helpers {
   String selectedLanguage = 'لغة التطبيق العربية';
 
   bool isExpanded = false;
@@ -21,7 +25,25 @@ class _CustomDrawerState extends State<CustomDrawer>  {
       isExpanded = !isExpanded;
     });
   }
+  Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Example share',
+        text: 'Example share text',
+        linkUrl: 'https://flutter.dev/',
+        chooserTitle: 'Example Chooser Title'
+    );
+  }
 
+  // Future<void> shareFile() async {
+  //   List<dynamic> docs = await DocumentsPicker.pickDocuments;
+  //   if (docs == null || docs.isEmpty) return null;
+  //
+  //   await FlutterShare.shareFile(
+  //     title: 'Example share',
+  //     text: 'Example share text',
+  //     filePath: docs[0] as String,
+  //   );
+  // }
 
   // Default language
 
@@ -101,7 +123,7 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(60)
                   ),
-                  child: Image.asset('images/woman.png',fit: BoxFit.cover,),
+                  child: Image.network('https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png',fit: BoxFit.cover,),
                   clipBehavior: Clip.antiAlias,
                 ),
 
@@ -109,15 +131,19 @@ class _CustomDrawerState extends State<CustomDrawer>  {
               ],
             ),
               SizedBox(height: 10,),
-              Text('Ali ahmad',
+
+              Text(UserPreferenceController().name,
                 style: GoogleFonts.inter(
                   color: Colors.white,
                   fontSize: 17.sp,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-
               SizedBox(height: 10,),
+
+
+              UserPreferenceController().token == '' ?
+
               InkWell(
                onTap: (){
                  _showLoginDialog(context);
@@ -137,22 +163,22 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     ),
                   ),
                 ),
+              ) :
+              Container(
+                height: 30.h,
+                width: 120.w,
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(40)
+                ),
+                child: Center(
+                  child: Text('USD  0: المحفظة',
+                  style: GoogleFonts.inter(
+                    color: Colors.white,
+                  ),
+                  ),
+                ),
               ),
-              // Container(
-              //   height: 30.h,
-              //   width: 120.w,
-              //   decoration: BoxDecoration(
-              //       color: Colors.blue,
-              //       borderRadius: BorderRadius.circular(40)
-              //   ),
-              //   child: Center(
-              //     child: Text('USD  0: المحفظة',
-              //     style: GoogleFonts.inter(
-              //       color: Colors.white,
-              //     ),
-              //     ),
-              //   ),
-              // ),
               SizedBox(height: 20,),
 
 
@@ -301,19 +327,24 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     left: 18,
                     right: 18,
                   ),
-                  child: Container(
-                    child: Row(
-                      children: [
-                        Text('المناطق السياحية',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w700,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.pushReplacementNamed(context,'/areas_screen');
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text('المناطق السياحية',
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        // Image.asset('images/arrow_under.png')
-                      ],
+                          Spacer(),
+                          // Image.asset('images/arrow_under.png')
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -375,53 +406,53 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 ),
               ),
 
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 18,
-                    right: 18,
-                  ),
-                  child: InkWell(
-                    onTap: (){
-                      // Navigator.push(context, MaterialPageRoute(builder: (_){
-                      //   return FavoriteScreen();
-                      // }));
-                      // Navigator.pushReplacementNamed(context, '/favorite_screen');
-                    },
-                    child: Container(
-                      child: Row(
-                        children: [
-                          Text('المفضلة',
-                            style: GoogleFonts.inter(
-                              color: Colors.white,
-                              fontSize: 17.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          Spacer(),
-                          Icon(Icons.favorite_border_rounded,color: Colors.white,)
-                          // Image.asset('images/love.png',color: Colors.white)
+              // Directionality(
+              //   textDirection: TextDirection.rtl,
+              //   child: Padding(
+              //     padding: const EdgeInsets.only(
+              //       left: 18,
+              //       right: 18,
+              //     ),
+              //     child: InkWell(
+              //       onTap: (){
+              //         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+              //           return FavoriteScreen();
+              //         }));
+              //         // Navigator.pushReplacementNamed(context, '/favorite_screen');
+              //       },
+              //       child: Container(
+              //         child: Row(
+              //           children: [
+              //             Text('المفضلة',
+              //               style: GoogleFonts.inter(
+              //                 color: Colors.white,
+              //                 fontSize: 17.sp,
+              //                 fontWeight: FontWeight.w700,
+              //               ),
+              //             ),
+              //             Spacer(),
+              //             Icon(Icons.favorite_border_rounded,color: Colors.white,)
+              //             // Image.asset('images/love.png',color: Colors.white)
+              //
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
 
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                  top: 7,
-                  bottom: 20,
-                ),
-                child: Divider(
-                  height: 1,
-                  color: Colors.white,
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(
+              //     left: 15,
+              //     right: 15,
+              //     top: 7,
+              //     bottom: 20,
+              //   ),
+              //   child: Divider(
+              //     height: 1,
+              //     color: Colors.white,
+              //   ),
+              // ),
 
               Directionality(
                 textDirection: TextDirection.rtl,
@@ -601,6 +632,7 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                   ),
                   child: InkWell(
                     onTap: (){
+                      // share();
                       // Navigator.pushReplacementNamed(context, '/privacy_screen');
                     },
                     child: Container(
@@ -637,7 +669,8 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                 ),
               ),
 
-              Directionality(
+            UserPreferenceController().token != '' ?
+            Directionality(
                 textDirection: TextDirection.rtl,
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -665,8 +698,9 @@ class _CustomDrawerState extends State<CustomDrawer>  {
                     ),
                   ),
                 ),
-              ),
-SizedBox(height: 20,),
+              ) :
+            Text(''),
+              SizedBox(height: 20,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -810,7 +844,7 @@ class ListTileWidget extends StatelessWidget {
   }
 }
 
-void _showLogoutDialog(BuildContext context) {
+void _showLogoutDialog(BuildContext context)  {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -869,7 +903,11 @@ void _showLogoutDialog(BuildContext context) {
                       children: [
                         InkWell(
                           onTap: () {
-                            print('تم النقر على الزر');
+                            UserPreferenceController().loggedOut();
+                            // showSnackBar(context: context, message: 'Logged In Successfully', error: false);
+                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                             return Home();
+                           }));
                           },
                           child: Container(
                             width: 147.34,

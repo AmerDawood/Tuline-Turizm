@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tuline_turizm/api/controller/auth_api_controller.dart';
+import 'package:tuline_turizm/screens/auth/signup_screen.dart';
+import 'package:tuline_turizm/screens/home/app.dart';
 import 'package:tuline_turizm/screens/home/home_screen.dart';
+import 'package:tuline_turizm/utils/helpers.dart';
+
+import '../widgets/app_button.dart';
+import '../widgets/app_text_field.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -10,7 +17,25 @@ class SignInScreen extends StatefulWidget {
   State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignInScreenState extends State<SignInScreen> with Helpers {
+  late TextEditingController _emailEditingController;
+  late TextEditingController _passwordEditingController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _emailEditingController = TextEditingController();
+    _passwordEditingController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailEditingController.dispose();
+    _passwordEditingController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
         textDirection: TextDirection.rtl,
         child: Container(
           width: double.infinity,
-          height: 166.h,
+          height: 350.h,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -72,9 +97,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      // Navigator.push(context, MaterialPageRoute(builder: (_){
-                      //   return HomeScreen();
-                      // }));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                        return Home();
+                      }));
                     },
                     child: Container(
                       width: 95,
@@ -103,83 +128,103 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 30.0,
               ),
 
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      width: 169,
-                      height: 44,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 1, color: Color(0xFF18324B)),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Image.asset("images/google.png",),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            Text(
-                              'جوجل',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.inter(
-                                color: Color(0xFF18324B),
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                  AppTextField(
+                    textController: _emailEditingController,
+                    hint: 'بريد إلكتروني',
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter email';
+                      }
+                      return null;
+                    },
+                    textInputType: TextInputType.emailAddress,
+                    // onSaved: (value) {
+                    //   name = value!;
+                    // },
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      width: 169,
-                      height: 44,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 1, color: Color(0xFF18324B)),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Image.asset("images/facebook2.png",),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            Text(
-                              'فيسبوك ',
-                              textAlign: TextAlign.center,
 
-                              style: GoogleFonts.inter(
-                                color: Color(0xFF18324B),
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            )
-                          ],
+                  AppTextField(
+                    textController: _passwordEditingController,
+                    hint: 'كلمة المرور',
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter password';
+                      }
+                      return null;
+                    },
+                    // obscureText: true,
+                    textInputType: TextInputType.visiblePassword,
+                    // onSaved: (value) {
+                    //   name = value!;
+                    // },
+                  ),
+
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  AppButton(
+                    function: () async{
+                    await performLogin();
+                    },
+                    labelText: 'تسجيل الدخول ',
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('ليس لديك حساب ؟  ',
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
                         ),
                       ),
-                    ),
-                  )
-                ],
-              )
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (_){
+                            return SignUpScreen();
+                          }));
+                        },
+                        child: Text('سجل الان',
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          color: Colors.blue,
+                        ),
+                        ),
+                      ),
+                    ],
+                  ),
             ]),
           ),
         ),
       ),
     );
+  }
+  Future<void> performLogin() async {
+    if (checkData()) {
+      await login();
+    }
+  }
+
+  bool checkData() {
+    if (_emailEditingController.text.isNotEmpty &&
+        _passwordEditingController.text.isNotEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  Future<void> login() async {
+    bool status = await AuthApiController().login(
+        email: _emailEditingController.text,
+        password: _passwordEditingController.text);
+    if (status) {
+
+      Navigator.pushReplacementNamed(context, '/app');
+      showSnackBar(context: context, message: 'Logged In Successfully', error: false);
+
+    } else {
+      showSnackBar(context: context, message: 'Login failed', error: true);
+    }
   }
 }

@@ -18,20 +18,20 @@ class UserPreferenceController{
   Future<void> initSharedPreference () async {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
-  Future<void> saveUser({required User user}) async{
+  Future<void> saveUser({required User user , required String token}) async{
     _sharedPreferences.setBool('logged_in' ,true);
     _sharedPreferences.setInt('id', user.id!);
     _sharedPreferences.setString('name', user.name!);
     // _sharedPreferences.setString('email', user.email!);
     _sharedPreferences.setString('type', user.type!);
-    _sharedPreferences.setString('token', "${user.token}");
+    _sharedPreferences.setString('token', "${token}");
 
   }
   //
   //
   bool get loggedIn =>_sharedPreferences.getBool('logged_in')??false;
   String get token =>_sharedPreferences.getString('token')??'';
-  String get name =>_sharedPreferences.getString('name')??'Example';
+  String get name =>_sharedPreferences.getString('name')??'زائر';
   String get type =>_sharedPreferences.getString('type')??'زائر';
   String get email =>_sharedPreferences.getString('email')??'';
   int get id =>_sharedPreferences.getInt('id')??0;

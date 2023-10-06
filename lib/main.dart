@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tuline_turizm/perfs/user_preference_controller.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
+import 'package:tuline_turizm/screens/areas/areas_screen.dart';
 import 'package:tuline_turizm/screens/auth/signin_screen.dart';
 import 'package:tuline_turizm/screens/favorite/favorite_screen.dart';
 import 'package:tuline_turizm/screens/home/app.dart';
@@ -56,6 +57,7 @@ void main()async{
              '/add_wallet' : (context) => AddWallet(),
              '/maps_screen' : (context) => LocationDetails(),
              '/my_locations' : (context) => MyLocations(),
+             '/areas_screen' : (context) => AreaScreen(),
              '/test' : (context) => Test3(),
 
            },
