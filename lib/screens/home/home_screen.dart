@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tuline_turizm/api/controller/area_api_controller.dart';
+import 'package:tuline_turizm/models/area.dart';
+import 'package:tuline_turizm/models/section.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
 import 'package:tuline_turizm/screens/home/type_service/select_service_type.dart';
 
+import '../../api/controller/section_api_controller.dart';
 import '../widgets/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,6 +22,30 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+  List<Area> _area = <Area>[];
+  late Future<List<Area>> _future;
+
+  List<Section> _section = <Section>[];
+  late Future<List<Section>> _future1;
+
+  @override
+  void initState() {
+    super.initState();
+    _future1 = SectionApiController().getSections();
+    _future = AreaApiController().getArea();
+    _future.then((home) {
+      if (home != null) {
+        print("Data: $home");
+
+      } else {
+        print("Data is null");
+      }
+    }).catchError((error) {
+      print("Error fetching Home Data: $error");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -359,236 +387,115 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
 
-            SizedBox(height: 20,),
+            // SizedBox(height: 20,),
 
-            InkWell(
-              onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
-                  return SelectServiceType();
-                }));
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(
-                        'images/img.png',
-                        width: double.infinity,
-                        height: 110.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: Center(
-                          child: Text(
-                            'الاستقبال والتوديع',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 40,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w500,
-                              shadows: [
-                                Shadow(
-                                  color: Color(0xFF000000),
-                                  offset: Offset(1, 0),
-                                  blurRadius: 15,
+
+
+            SizedBox(
+              height: 400,
+              child: FutureBuilder<List<Section>>(
+                future: _future1,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child:  CircularProgressIndicator(),
+                      // child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                    _section = snapshot.data ?? [];
+                    return ListView.builder(
+                        itemCount: _section.length,
+                        itemBuilder: (BuildContext ctx , value){
+                      return  InkWell(
+                        onTap: (){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                            return SelectServiceType();
+                          }));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Image.asset(
+                                  'images/img.png',
+                                  width: double.infinity,
+                                  height: 110.0,
+                                  fit: BoxFit.cover,
                                 ),
-                                Shadow(
-                                  color: Color(0x3F000000),
-                                  offset: Offset(1, -1),
-                                  blurRadius: 4,
-                                ),
-                                Shadow(
-                                  color: Color(0x3F000000),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 4,
-                                ),
-                                Shadow(
-                                  color: Color(0x3F000000),
-                                  offset: Offset(-3, 4),
-                                  blurRadius: 4,
-                                ),
-                              ],
-                            ),
-                            textAlign: TextAlign.right,
-                          )),
-                    ),
-                  ],
-                ),
+                              ),
+                              Positioned(
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                child: Center(
+                                    child: Text(
+                                      'الاستقبال والتوديع',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 40,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w500,
+                                        shadows: [
+                                          Shadow(
+                                            color: Color(0xFF000000),
+                                            offset: Offset(1, 0),
+                                            blurRadius: 15,
+                                          ),
+                                          Shadow(
+                                            color: Color(0x3F000000),
+                                            offset: Offset(1, -1),
+                                            blurRadius: 4,
+                                          ),
+                                          Shadow(
+                                            color: Color(0x3F000000),
+                                            offset: Offset(2, 4),
+                                            blurRadius: 4,
+                                          ),
+                                          Shadow(
+                                            color: Color(0x3F000000),
+                                            offset: Offset(-3, 4),
+                                            blurRadius: 4,
+                                          ),
+                                        ],
+                                      ),
+                                      textAlign: TextAlign.right,
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+
+                  } else {
+                    return Column(
+                      children: [
+                        Icon(
+                          Icons.warning,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'No Data',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                },
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'images/img.png',
-                      width: double.infinity,
-                      height: 110.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Center(
-                        child: Text(
-                          'الرحلات',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w500,
-                            shadows: [
-                              Shadow(
-                                color: Color(0xFF000000),
-                                offset: Offset(1, 0),
-                                blurRadius: 15,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(1, -1),
-                                blurRadius: 4,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(2, 4),
-                                blurRadius: 4,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(-3, 4),
-                                blurRadius: 4,
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.right,
-                        )),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'images/img.png',
-                      width: double.infinity,
-                      height: 110.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Center(
-                        child: Text(
-                          'قسم جديد',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w500,
-                            shadows: [
-                              Shadow(
-                                color: Color(0xFF000000),
-                                offset: Offset(1, 0),
-                                blurRadius: 15,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(1, -1),
-                                blurRadius: 4,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(2, 4),
-                                blurRadius: 4,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(-3, 4),
-                                blurRadius: 4,
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.right,
-                        )),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      'images/img.png',
-                      width: double.infinity,
-                      height: 110.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Center(
-                        child: Text(
-                          'الخدمات',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontFamily: 'Inter',
-                            fontWeight: FontWeight.w500,
-                            shadows: [
-                              Shadow(
-                                color: Color(0xFF000000),
-                                offset: Offset(1, 0),
-                                blurRadius: 15,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(1, -1),
-                                blurRadius: 4,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(2, 4),
-                                blurRadius: 4,
-                              ),
-                              Shadow(
-                                color: Color(0x3F000000),
-                                offset: Offset(-3, 4),
-                                blurRadius: 4,
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.right,
-                        )),
-                  ),
-                ],
-              ),
-            ),
+
+
           ],
         ),
       ),
@@ -652,264 +559,78 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 20,),
 
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 20,
-                  ),
-                  child: Container(
-                    height: 50,
-                    width: double.infinity,
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(20),
-                       border: Border.all(color: Colors.black)
-                     ),
-                    child: Center(
-                      child: Text('تركيا',
-                        style: GoogleFonts.inter(
-                          color: Color.fromRGBO(0, 125, 251, 1),
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              height: 300,
+              child: FutureBuilder<List<Area>>(
+                future: _future,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                    child:  CircularProgressIndicator(),
+                      // child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                    _area = snapshot.data ?? [];
 
-
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 7,
-                            right: 7,
-                            top: 20,
+                    return ListView(
+                      children: <Widget>[
+                        GridView.builder(
+                          shrinkWrap: true,
+                          itemCount: _area.length,
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3, // Number of items in a row
+                            crossAxisSpacing: 10.0, // Horizontal spacing between items
+                            mainAxisSpacing: 10.0, // Vertical spacing between items
                           ),
-                          child: Container(
-                            height: 45,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(
-                              child: Text('إسطنبول',
-                                style: GoogleFonts.inter(
-                                  color: Color.fromRGBO(24, 50, 75, 1),
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 7,
-                            right: 7,
-                            top: 20,
-                          ),
-                          child: Container(
-                            height: 45,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(
-                              child: Text('طربزون',
-                                style: GoogleFonts.inter(
-                                  color: Color.fromRGBO(24, 50, 75, 1),
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              clipBehavior: Clip.antiAlias,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(_area[index].title),
+                                ],
                               ),
-                            ),
-                          ),
+                            );
+                          },
                         ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 7,
-                            right: 7,
-                            top: 20,
-                          ),
-                          child: Container(
-                            height: 45,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(
-                              child: Text('انطاليا',
-                                style: GoogleFonts.inter(
-                                  color: Color.fromRGBO(24, 50, 75, 1),
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      ],
+                    );
 
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8,right: 8),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 7,
-                            right: 7,
-                            top: 10,
-                          ),
-                          child: Container(
-                            height: 45,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(
-                              child: Text('مرميس',
-                                style: GoogleFonts.inter(
-                                  color: Color.fromRGBO(24, 50, 75, 1),
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
+                  } else {
+                    return Column(
+                      children: [
+                        Icon(
+                          Icons.warning,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'No Data',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.grey,
                           ),
                         ),
-                      ),
+                      ],
+                    );
+                  }
+                },
+              ),
+            ),
+          ),
 
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 7,
-                            right: 7,
-                            top: 10,
-                          ),
-                          child: Container(
-                            height: 45,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(
-                              child: Text('ألانيا',
-                                style: GoogleFonts.inter(
-                                  color: Color.fromRGBO(24, 50, 75, 1),
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 7,
-                            right: 7,
-                            top: 10,
-                          ),
-                          child: Container(
-                            height: 45,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black)
-                            ),
-                            child: Center(
-                              child: Text('كاباوكيا',
-                                style: GoogleFonts.inter(
-                                  color: Color.fromRGBO(24, 50, 75, 1),
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
 
-                    ],
-                  ),
-                ),
 
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 20,
-                  ),
-                  child: Container(
-                    height: 50,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      color: Color.fromRGBO(245, 245, 255, 1),
-
-                    ),
-                    child: Center(
-                      child: Text('تركيا',
-                        style: GoogleFonts.inter(
-                          color: Colors.black,
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 6,
-                  ),
-                  child: Container(
-                    height: 50,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color.fromRGBO(245, 245, 255, 1),
-
-                    ),
-                    child: Center(
-                      child: Text('أذريجان',
-                        style: GoogleFonts.inter(
-                          color: Colors.black,
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
 
                 // SvgPicture.asset('images/map_svg.svg')
               ],

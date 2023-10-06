@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tuline_turizm/perfs/user_preference_controller.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details.dart';
 import 'package:tuline_turizm/screens/advertisements/advertisement_details2.dart';
 import 'package:tuline_turizm/screens/auth/signin_screen.dart';
@@ -15,7 +16,9 @@ import 'package:tuline_turizm/screens/test.dart';
 import 'package:tuline_turizm/screens/wallet/add_wallet.dart';
 import 'package:tuline_turizm/screens/wallet/wallet_screen.dart';
 
-void main() {
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferenceController().initSharedPreference();
   runApp(const MyApp());
 }
  class MyApp extends StatefulWidget {
@@ -38,7 +41,7 @@ void main() {
            // locale: savedLocale != null ? Locale(savedLocale!) : null,
            // fallbackLocale: Locale('en', 'US'),
            debugShowCheckedModeBanner: false,
-           initialRoute: '/test',
+           initialRoute: '/splash_screen',
            routes: {
              '/splash_screen' : (context) => SplashScreen(),
              '/app' : (context) => Home(),

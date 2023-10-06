@@ -64,7 +64,8 @@ class _Test3State extends State<Test3> {
 
             return Column(
               children: [
-              SizedBox(
+                // Services
+                SizedBox(
               height: 200,
               child: ListView.builder(
                 itemCount: services!.length,
@@ -77,7 +78,8 @@ class _Test3State extends State<Test3> {
                 },
               ),
             ),
-          SizedBox(
+                // Offers
+                SizedBox(
           height: 200,
           child: ListView.builder(
           itemCount: offers!.length,
@@ -89,6 +91,7 @@ class _Test3State extends State<Test3> {
           },
           ),
           ),
+                // Sliders
                 SizedBox(
                   height: 200,
                   child: ListView.builder(
@@ -101,7 +104,6 @@ class _Test3State extends State<Test3> {
                     },
                   ),
                 ),
-
                 ElevatedButton(
                   onPressed: () {
                     _showNumberChangeDialog(context);
@@ -143,8 +145,6 @@ class _Test3State extends State<Test3> {
       });
     }
   }
-
-
 
 }
 class NumberChangeDialog extends StatefulWidget {

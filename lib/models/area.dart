@@ -1,20 +1,12 @@
 class Area {
-  int? id;
-  String? title;
-  String? description;
-  String? latitude;
-  String? longitude;
-  String? createdAt;
-  String? updatedAt;
+ late int id;
+ late String title;
+ late String description;
+ late String latitude;
+ late String longitude;
+ late String createdAt;
+ late String updatedAt;
 
-  Area(
-      {this.id,
-        this.title,
-        this.description,
-        this.latitude,
-        this.longitude,
-        this.createdAt,
-        this.updatedAt});
 
   Area.fromJson(Map<String, dynamic> json) {
     id = json['id'];
